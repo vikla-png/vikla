@@ -53,11 +53,7 @@
             const scrimer = document.getElementById('scrimer');
             const scarySound = document.getElementById('scarySound');
 
-            // Запрашиваем подтверждение у пользователя
-            const userConfirmed = confirm("Вы уверены, что хотите продолжить? Это может быть страшно!");
-            if (!userConfirmed) return;
-
-            if (typeof scarySound.play === 'function') {
+            if (scarySound && typeof scarySound.play === 'function') {
                 scrimer.style.display = 'block';
                 scarySound.play().catch(error => {
                     console.error("Ошибка воспроизведения звука:", error);
