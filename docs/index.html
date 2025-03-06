@@ -42,10 +42,10 @@
     <div id="scrimer">
         <img src="scary_image.jpg" alt="Скример">
         <audio id="scarySound">
-    <source src="scary_sound.mp3" type="audio/mpeg">
-    <source src="scary_sound.ogg" type="audio/ogg">
-    Ваш браузер не поддерживает аудио.
-</audio>
+            <source src="scary_sound.mp3" type="audio/mpeg">
+            <source src="scary_sound.ogg" type="audio/ogg">
+            Ваш браузер не поддерживает аудио.
+        </audio>
     </div>
 
     <script>
@@ -53,12 +53,23 @@
             const scrimer = document.getElementById('scrimer');
             const scarySound = document.getElementById('scarySound');
 
-            scrimer.style.display = 'block';
-            scarySound.play();
+            // Запрашиваем подтверждение у пользователя
+            const userConfirmed = confirm("Вы уверены, что хотите продолжить? Это может быть страшно!");
+            if (!userConfirmed) return;
 
-            setTimeout(() => {
-                scrimer.style.display = 'none';
-            }, 3000);
+            if (typeof scarySound.play === 'function') {
+                scrimer.style.display = 'block';
+                scarySound.play().catch(error => {
+                    console.error("Ошибка воспроизведения звука:", error);
+                    alert("Звук не может быть воспроизведен. Пожалуйста, проверьте настройки звука.");
+                });
+
+                setTimeout(() => {
+                    scrimer.style.display = 'none';
+                }, 3000);
+            } else {
+                alert("Ваш браузер не поддерживает воспроизведение звука.");
+            }
         }
     </script>
 </body>
