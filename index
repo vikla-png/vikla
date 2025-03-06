@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViklaVideo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f0f0f0;
+        }
+        #content {
+            font-size: 24px;
+            color: #333;
+        }
+        #scrimer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1000;
+        }
+        #scrimer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <p>Добро пожаловать на сайт!</p>
+        <p>Пожалуйста, нажмите на кнопку ниже.</p>
+        <button onclick="showScrimer()">Нажми меня</button>
+    </div>
+
+    <div id="scrimer">
+        <img src="scary_image.jpg" alt="Скример">
+        <audio id="scarySound" src="scary_sound.mp3"></audio>
+    </div>
+
+    <script>
+        function showScrimer() {
+            const scrimer = document.getElementById('scrimer');
+            const scarySound = document.getElementById('scarySound');
+
+            scrimer.style.display = 'block';
+            scarySound.play();
+
+            setTimeout(() => {
+                scrimer.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
