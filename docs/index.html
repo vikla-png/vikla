@@ -41,7 +41,12 @@
 
     <div id="scrimer">
         <img src="scary_image.jpg" alt="Скример">
-        <audio id="scarySound" src="scary_sound.mp3"></audio>
+        <audio id="scarySound">
+    <source src="scary_sound.mp3" type="audio/mpeg">
+    <source src="scary_sound.ogg" type="audio/ogg">
+    Ваш браузер не поддерживает аудио.
+</audio>
+
     </div>
 
     <script>
